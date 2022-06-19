@@ -38,27 +38,15 @@ Available presets:
 
 - `ninjam-msys2`
 
-  First, you need to patch SDL2 port:
-    - Copy `patch/sdl2/mingw-windows-devices.patch` to `vcpkg/ports/sdl2/mingw-windows-devices.patch`
-    - Add `mingw-windows-devices.patch` to `vcpkg_from_github`'s `PATCHES`:
+  You need to patch SDL2 port first, then you can configure it. This bug is [fixed](https://github.com/libsdl-org/SDL/commit/d2c4d74dd0302369251dce9375b49f394e54f76a) but is not released yet. You also need to configure in MSYS2 MinGW terminal to make sure you use the correct MinGW's `cmake`
 
-      ```cmake
-      vcpkg_from_github(
-          ...
-          PATCHES
-              0001-sdl2-Enable-creation-of-pkg-cfg-file-on-windows.patch
-              0002-sdl2-skip-ibus-on-linux.patch
-              0003-sdl2-disable-sdlmain-target-search-on-uwp.patch
-              0004-Define-crt-macros.patch
-              mingw-windows-devices.patch
-      )
-      ```
-
-  Then, from MSYS2 MinGW 64-bit terminal:
+  From MSYS2 MinGW 64-bit terminal run these commands:
   ```
+  cp patch/sdl2/mingw-windows-devices.patch vcpkg/ports/sdl2/mingw-windows-devices.patch
+  sed -i '/0004-Define-crt-macros.patch/a \ \ \ \ \ \ \ \ mingw-windows-devices.patch' vcpkg/ports/sdl2/portfile.cmake
   cmake --preset ninjam-msys2
   ```
-  You need to configure in MSYS2 MinGW terminal to make sure you use the correct MinGW's `cmake`
+
 
 ## How to debug with VS Code
 
