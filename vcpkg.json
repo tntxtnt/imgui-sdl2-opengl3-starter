@@ -3,7 +3,15 @@
   "version": "0.0.1",
   "dependencies": [
     "fmt",
-    "sdl2",
+    {
+      "name": "sdl2",
+      "features": ["x11"],
+      "platform": "!windows"
+    },
+    {
+      "name": "sdl2",
+      "platform": "windows"
+    },
     {
       "name": "imgui",
       "features": [

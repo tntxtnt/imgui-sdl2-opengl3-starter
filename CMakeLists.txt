@@ -16,12 +16,17 @@ add_executable(${PROJECT_NAME} WIN32
 find_package(fmt REQUIRED)
 find_package(SDL2 CONFIG REQUIRED)
 find_package(imgui CONFIG REQUIRED)
+if (UNIX AND NOT APPLE)
+  set(OPENGL_LIB GL)
+else()
+  set(OPENGL_LIB opengl32)
+endif()
 target_link_libraries(${PROJECT_NAME}
   PRIVATE
     fmt::fmt-header-only
     SDL2::SDL2 SDL2::SDL2main
     imgui::imgui
-    opengl32
+    ${OPENGL_LIB}
 )
 if (MINGW)
   target_link_options(${PROJECT_NAME} PRIVATE "-lmingw32")
