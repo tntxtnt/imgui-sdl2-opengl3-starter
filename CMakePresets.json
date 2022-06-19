@@ -62,15 +62,6 @@
       }
     },
     {
-      "name": "ninjam-msys2-novcpkg",
-      "displayName": "Ninja Multi-Config MSYS2 MINGW (run in MINGW64 console)",
-      "inherits": "windows-only",
-      "generator": "Ninja Multi-Config",
-      "cacheVariables": {
-        "CMAKE_CXX_COMPILER": "g++"
-      }
-    },
-    {
       "name": "ninjam-msys2",
       "displayName": "Ninja Multi-Config MSYS2 MINGW (run in MINGW64 console), using vcpkg as submodule",
       "inherits": [
@@ -128,12 +119,6 @@
       "name": "ninjam-msvc",
       "configurePreset": "ninjam-msvc",
       "displayName": "Ninja Multi-Config MSVC, using vcpkg as submodule",
-      "inherits": "windows-only"
-    },
-    {
-      "name": "ninjam-msys2-novcpkg",
-      "displayName": "Ninja Multi-Config MSYS2 MINGW build",
-      "configurePreset": "ninjam-msys2-novcpkg",
       "inherits": "windows-only"
     },
     {
